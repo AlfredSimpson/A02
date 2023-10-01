@@ -2,8 +2,8 @@
 
 ## A guide to using Git and GitHub with Webstorm
 
-By: Alfred Simpson <br>
-Date: 09/29/2023
+**By:** Alfred Simpson <br>
+**Date:** 09/29/2023
 
 # Overview
 
@@ -11,10 +11,14 @@ This guide will walk you through the process of using Git and GitHub with Websto
 
 - Webstorm
     - What is Webstorm?
+    - Downloading Webstorm
+    - Installing Webstorm
     - Creating a project in Webstorm
+    - Creating a new file (or two)
 - Git
     - What is Git?
     - Why use Git?
+    - Installing Git
 - GitHub
     - What is GitHub?
     - How is it different from Git?
@@ -44,6 +48,8 @@ expand the section and read more for each section.
 
 <details>
 <summary> Read all about it!</summary>
+
+## What is Webstorm?
 Webstorm is a JavaScript IDE (Integrated Development Environment) developed by JetBrains. It is a powerful tool that allows you to write, edit, and debug code in a single application. It also has built-in support for Git and GitHub, which makes it a great tool for working on projects that use Git and GitHub. While other editors exist, such as VisualStudio Code, those are actually just text editors with extensions that add IDE-like functionality. Webstorm is a true IDE, and as such, it is the best tool for the job. Maybe - I don't know, I'm not your mom. Use whatever you want. 
 
 ## Downloading Webstorm
@@ -220,7 +226,9 @@ SimpliLearn actually gives a really good explanation of the difference between G
 ## Creating a GitHub account
 
 To create a GitHub account, you'll just need to go to GitHub's site. You can do so by clicking [here](https://github.com/). From there, click on signup, and you'll see a screen like this: <br>
-![A screenshot of the signup page](SignUp.png)
+
+![A screenshot of the signup page](img/SignUp.png)
+
 <br>
 
 Follow the prompts to get started. Eventually you will have your very own GitHub account. As a side note: make sure to use your .edu email if you're signing up for the first time. They do offer pretty sweet [education deals](https://education.github.com/). 
@@ -276,10 +284,94 @@ What good is version controlling if you don't add things to control? Add all fil
 ``` git add --all``` or ```git add -A```
 
 You'll probably see some lovely warnings the first time you do this:
-![Git Warnings](gitwarnings.png)
+![Git Warnings](img/gitwarnings.png)
 
 That's okay. Don't worry about it. LF stands for line feed. CRLF stands for carriage return line feed. It's a line ending. It's a thing. It's not a big deal. It's just a warning. You can ignore it. It's just letting you know that it will make changes. It's not a big deal.
 
+If you didn't use git add -A, and you used git add --all, you'd see the same thing. I don't have a screenshot for that, but I promise it's the same thing.
+
+![Git add all in the terminal](img/gitaddall.png)
+
+### Commit your changes
+
+We've initialized git. The files are added. Now we need to commit.
+
+```git commit -m "Your commit message here"```
+
+I used:
+![git commit message](img/GitCommitMessage.png)
+
+
+### But where is it?
+
+We committed the changes, but where did they go?
+Nowhere. We need to send them to GitHub.
+
+So let's create a GitHub repository through command line. Make sure you're using Git Bash for this.
+
+```gh repo create```
+
+![An error specifying that we failed to authorize with github](img/FailureToAuthorize.png)
+
+Oh, no. An error! That's okay. We just need to go download the GitHub [Command Line Interface](https://cli.github.com/).
+
+Download that and install it. Then, authorize it using the following command:
+
+```gh auth login```
+
+![Successfully authorized login using gh auth login](img/authlogin.png)
+
+Follow the prompts!
+
+I chose to use GitHub.com, and SSH for Git Operations. I then selected my SSH public key.
+
+If you don't have an SSH key and would like to do the same... You can follow [GitHub's instructions](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) on how to do so. 
+
+Now, with **that** done, let's try again.
+
+```gh repo create```
+
+You'll get a lot of prompts asking you to provide a repository name, description, etc. Enter it all, and follow the prompts until it creates the repository. I didn't screenshot this for you as it did contain private data of my own. 
+
+
+### Finally, push it!
+
+Don't stop, push it! Push it real good!
+
+Since we did this in a way that takes way more time than most people would, we'll need something more than just a regular git push... Go over to GitHub and you'll find you have a brand new public repo! Take the URL, and use it in the following command:
+
+```git remote add origin <URL of your github repo>```
+Check that it's there using ```git remote -v```
+
+Now, we can push it!
+
+```git push -u origin main```
+
+![A successful push](img/Success.png)
+
+It's a beautiful thing to see.
+
+## The... easier way.
+
+Okay, so that was a lot. I'm not going to lie. It was a lot. But it's a good way to learn. However, there is an easier way.
+
+Since you have a GitHub account created, all you really needed to do was create a repository on GitHub. Then, clone it in Webstorm. You can do so by clicking on "Get from Version Control" on the welcome screen.
+
+You could have also used the git clone command in the terminal. 
+
+```git clone <URL of your github repo>```
+
+Then, you could have made your changes, committed them, and pushed them.
+
+But where's the fun in that? You wouldn't have learned anything. I learned something - because things broke! And now you maybe learned from my mistake. Or you didn't! Who knows? 
+
+## What about pulling?
+
+Let's say you're working on a project with someone else. They make a change, and you need to pull it. You can do so using the following command:
+
+```git pull```
+
+That's it. That's all you need to do. It will pull the changes from the remote repository to your local machine. Just make sure that you're in the right directory when you do so.
 
 
 </details>
@@ -387,6 +479,7 @@ As I'm pretty familiar with Git, I didn't need to reference many sources. Howeve
 - [Git Glossary](https://git-scm.com/docs/gitglossary)
 - [GitHub](https://github.com)
 - [GitHub Blog](https://github.blog/2023-01-25-100-million-developers-and-counting/)
+- [GitHub Documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 - [GitHub Education](https://education.github.com/)
 - [Merriam-Webster](https://www.merriam-webster.com/dictionary/git)
 - [New York Times](https://www.nytimes.com/2018/06/04/technology/microsoft-github-cloud-computing.html)
