@@ -373,7 +373,11 @@ Let's say you're working on a project with someone else. They make a change, and
 
 That's it. That's all you need to do. It will pull the changes from the remote repository to your local machine. Just make sure that you're in the right directory when you do so.
 
+## Finally, show people your webpage.
 
+I didn't go in depth about the content of the index.html file - but you can take a look at the simple content I added. If you want to showcase this on Github so that people can click it. To allow that, in the repository, go to settings, click pages, and deploy it from the main branch that you're working out of. Make sure to have an index.html file!
+
+If all went well, Github will eventually show a page associated with this. Mine is found <a href="https://alfredsimpson.github.io/A02/" >here.</a>
 </details>
 
 # Glossary
